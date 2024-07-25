@@ -51,11 +51,21 @@ export class ModalInputComponent implements OnInit {
     const quantity = this._quantity || 0;
     console.log(name, quantity);
     if (!this._editMode) {
+      //throw alert if name or quantity is empty
+      if (name === "" || quantity === 0) {
+        alert("Grocery Item and Quantity are both required");
+        return;
+      }
       const newGrocery = new Grocery(name, quantity, "", 0, "");
       this.groceryServiceService.addGrocery(newGrocery);
     }
     else {
       if (this._grocery !== undefined && this._index !== undefined) {
+        //throw alert if name or quantity is empty
+        if (name === "" || quantity === 0) {
+          alert("Grocery Item and Quantity are both required");
+          return;
+        }
         this._grocery.setName(name);
         this._grocery.setQuantity(quantity);
         this.groceryServiceService.editGrocery(this._grocery, this._index);

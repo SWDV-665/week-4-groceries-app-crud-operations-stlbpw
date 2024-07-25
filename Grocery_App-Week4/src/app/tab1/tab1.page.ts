@@ -11,6 +11,8 @@ import { GroceryserviceService } from '../groceryservice.service';
 import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular/standalone';
 import { ModalInputComponent } from '../modal-input/modal-input.component';
+import { addIcons } from 'ionicons';
+import { pencil, trash } from 'ionicons/icons';
 
 
 @Component({
@@ -34,6 +36,8 @@ export class Tab1Page {
     private modalCtrl: ModalController) {
 
     this._groceryList = groceryServiceService.getGroceryList();
+
+    addIcons({ pencil, trash });
 
   }
 
